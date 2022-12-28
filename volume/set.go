@@ -138,6 +138,7 @@ func (vs *Set) createDiskImage(ctx context.Context, size int64) (path string, re
 		return
 	}
 
+	fmt.Println("-F", f.Name())
 	out, err := exec.CommandContext(ctx, "mkfs."+fsType, "-F", f.Name()).CombinedOutput()
 	if err != nil {
 		retErr = fmt.Errorf("failed to execute mkfs.%s: %s: %w", fsType, out, err)

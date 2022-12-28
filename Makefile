@@ -185,7 +185,7 @@ test-in-docker:
 		--entrypoint=/bin/bash \
 		--workdir /src \
 		$(FIRECRACKER_CONTAINERD_BUILDER_IMAGE) \
-		-c "make test"
+		-c "bash"
 
 $(TEST_SUBDIRS):
 	$(MAKE) -C $(patsubst test-%,%,$@) test

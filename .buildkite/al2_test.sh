@@ -16,10 +16,10 @@ sudo -E PATH=$PATH \
      $bin_path/firecracker-containerd \
      --config $dir/config.toml &>> runtime/logs/containerd.out &
 containerd_pid=$!
-
+echo $PATH
 sudo $bin_path/firecracker-ctr --address $dir/containerd.sock content fetch docker.io/library/alpine:3.10.1
 
 TAP_PREFIX=build$BUILDKITE_BUILD_NUMBER \
      sudo -E PATH=$bin_path:$PATH /usr/local/bin/go test -count=1 -run TestMultipleVMs_Isolated ./... -v
 
-sudo kill $containerd_pid
+#sudo kill $containerd_pid
